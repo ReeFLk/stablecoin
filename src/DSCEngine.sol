@@ -145,7 +145,7 @@ contract DSCEngine is ReentrancyGuard {
         return (collateralAdjustedForThreshold * PRECISION) / totalDscMinted;
     }
 
-    function _revertIfHealthFactorIsBroken(address _user) internal {
+    function _revertIfHealthFactorIsBroken(address _user) internal view {
         uint256 userHealthFactor = _healthFactor(_user);
         if (userHealthFactor < MIN_HEALTH_FACTOR) {
             revert DSCEngine__NotEnoughCollateral(userHealthFactor);
