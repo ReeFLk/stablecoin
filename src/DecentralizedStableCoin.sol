@@ -30,14 +30,15 @@ abstract contract DecentralizedStableCoin is ERC20Burnable, Ownable {
         }
         super.burn(_amount);
     }
-    function mint(address _to, uint256 _amount) public onlyOwner returns(bool){
-        if(_to == address(0)){
+
+    function mint(address _to, uint256 _amount) public onlyOwner returns (bool) {
+        if (_to == address(0)) {
             revert DSC__NotZeroAddress();
         }
-        if(_amount <= 0){
+        if (_amount <= 0) {
             revert DSC__MustBeMoreThanZero();
         }
         _mint(_to, _amount);
-        return true
+        return true;
     }
 }
